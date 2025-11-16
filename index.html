@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعلان ألعاب البلايستيشن</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0f24, #001f54, #003b8e);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #1e90ff, #87cefa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #87cefa;
+            margin-bottom: 20px;
+        }
+
+        .platforms {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .platform {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 45%;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.7s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .platform:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .ps4 {
+            border-top: 5px solid #1e90ff;
+        }
+        
+        .ps5 {
+            border-top: 5px solid #ffffff;
+        }
+        
+        .platform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .platform-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        
+        .ps4 .platform-title {
+            color: #1e90ff;
+        }
+        
+        .ps5 .platform-title {
+            color: #ffffff;
+        }
+        
+        .pricing {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .game {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .game:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, #1e90ff, #87cefa);
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* قسم المشروبات الجديد */
+        .drinks-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.7s ease;
+        }
+        
+        .drinks-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #ffa500, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .drinks-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .drinks-category {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 45%;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .drinks-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hot-drinks {
+            border-top: 5px solid #ff8c00;
+        }
+        
+        .cold-drinks {
+            border-top: 5px solid #1e90ff;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hot-drinks .category-title {
+            color: #ff8c00;
+        }
+        
+        .cold-drinks .category-title {
+            color: #1e90ff;
+        }
+        
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .drink-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .drink-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .drink-price {
+            display: block;
+            margin-top: 5px;
+            font-weight: bold;
+            color: #87cefa;
+        }
+        
+        /* تصميم خاص للاندومي */
+        .indomie-item {
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .indomie-item::after {
+            content: "🔥";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #1e90ff, #87cefa);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .platform, .drinks-category {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .drinks-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PLAYSTATION<br> EL-4back</h1>
+            <div class="subtitle">استمتع بوقتك</div>
+        </header>
+        
+        <div class="platforms">
+            <div class="platform ps4">
+                <div class="platform-header">
+                    <div class="platform-title">PS4</div>
+                </div>
+                
+                <div class="pricing">
+                    <div class="price-item">
+                        <span>الساعة </span>
+                        <span>15 جنيه</span>
+                    </div>
+                    <div class="price-item">
+                        <span>3 ساعات</span>
+                        <span>35 جنيه</span>
+                    </div>
+                </div>
+                
+                <h3>الألعاب المتاحة:</h3>
+                <div class="games-grid">
+                    <div class="game">FC23</div>
+                    <div class="game highlight">FC26</div>
+                    <div class="game">PES 2021</div>
+                    <div class="game">GTA5</div>
+                    <div class="game highlight">WarFrame</div>
+                    <div class="game">Crash</div>
+                    <div class="game">Fortnite</div>
+                    <div class="game highlight">Call of Duty</div>
+                    <div class="game">Ghost of Tsushima</div>
+                    <div class="game highlight">God of War</div>
+                    <div class="game highlight">PES 2019</div>
+                    <div class="game">Horizon Zero Dawn</div>
+                </div>
+            </div>
+            
+            <div class="platform ps5">
+                <div class="platform-header">
+                    <div class="platform-title">PS5</div>
+                </div>
+                
+                <div class="pricing">
+                    <div class="price-item">
+                        <span>الساعة </span>
+                        <span>30 جنيه</span>
+                    </div>
+                    <div class="price-item">
+                        <span>3 ساعات</span>
+                        <span>70 جنيه</span>
+                    </div>
+                </div>
+                
+                <h3>الألعاب المتاحة:</h3>
+                <div class="games-grid">
+                    <div class="game highlight">FIFA 2024</div>
+                    <div class="game">FIFA 2023</div>
+                    <div class="game highlight">Fortnite</div>
+                    <div class="game">PES 2021</div>
+                    <div class="game highlight">Call of Duty: Black Ops III</div>
+                    <div class="game">PES 2019</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم المشروبات الجديد -->
+        <div class="drinks-section">
+            <h2 class="drinks-title">المشروبات والوجبات الخفيفة</h2>
+            <div class="drinks-container">
+                <div class="drinks-category hot-drinks">
+                    <div class="category-title">المشروبات الساخنة والوجبات</div>
+                    <div class="drinks-grid">
+                        <div class="drink-item">
+                            شاي
+                            <span class="drink-price">10 جنيه</span>
+                        </div>
+                        <div class="drink-item">
+                            قهوة 
+                            <span class="drink-price">15 جنيه</span>
+                         
+                        </div>
+                        <div class="drink-item">
+                            كوفي بريك
+                            <span class="drink-price">15 جنيه</span>
+                        </div>
+
+                        <div class="drink-item indomie-item">
+                            اندومي
+                            <span class="drink-price">20 جنيه</span>
+                        </div>  
+                    </div>
+                </div>
+                
+                <div class="drinks-category cold-drinks">
+                    <div class="category-title">المشروبات الباردة</div>
+                    <div class="drinks-grid">
+                        <div class="drink-item">
+                            Vcal
+                            <span class="drink-price">20 جنيه</span>
+                        </div>
+                        
+                        <div class="drink-item">
+                            Sprite
+                            <span class="drink-price">20 جنيه</span>
+                        </div>
+                        <div class="drink-item">
+                              Schweppes
+                            <span class="drink-price">20 جنيه</span>
+                        </div>
+                        <div class="drink-item">
+                             Twiest
+                            <span class="drink-price">20 جنيه</span>
+                        </div>                        
+                        <div class="drink-item">
+                            مياه معدنية
+                            <span class="drink-price">10 جنيه</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2>احجز وقتك الآن واستمتع بتجربة الألعاب الأفضل</h2>
+            <p>تواصل معنا لمعرفة المزيد عن العروض والألعاب الجديدة والمشروبات والوجبات</p>
+            <a href="https://wa.me/201044316670" class="cta-button">احجز الآن</a>
+        </div>
+    </div>
+</body>
+</html>
